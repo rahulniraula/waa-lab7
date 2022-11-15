@@ -1,9 +1,9 @@
 import Post from "./Post";
 const posts = (props) => {
     return (
-        <div className="row">
+        <div className="row" >
             {props.posts.map(post => {
-                return <Post key={post.id} post={post}></Post>
+                return <Post key={post.id} post={post} setSelectedPost={props.setSelectedPost}></Post>
             })}
         </div>
     );
