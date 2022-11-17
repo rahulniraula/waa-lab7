@@ -1,6 +1,7 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { baseUrl } from "../container/Dashboard";
+import SelectedPostContext from "../context/selectedPostContext";
 
 
 const PostDetails = (props) => {
@@ -11,20 +12,21 @@ const PostDetails = (props) => {
             setPost(resp.data)
         }).catch();
     };
+    const selectedPost=useContext(SelectedPostContext)
     const [post,setPost]=useState({});
     useEffect(()=>{
-        fetchPost(props.id)
-    },[props.id]);
+        fetchPost(selectedPost.id)
+    },[selectedPost.id]);
     return (
         <div className="row">
             <div className="col-md-12">
                 <h2>
-                    {props.post.title}
+                    {post.title}
                 </h2>
-                <h4>{props.post.author}</h4>
-                <p>{props.post.content}</p>
+                <h4>{post.author}</h4>
+                <p>{post.content}</p>
                 <button className="btn btn-primary mx-1">Edit</button>
-                <button className="btn btn-primary" onClick={()=>props.deletePost(props.post.id)}>Delete</button>
+                <button className="btn btn-primary" onClick={()=>props.deletePost(post.id)}>Delete</button>
             </div>
         </div>
     );
