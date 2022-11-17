@@ -62,7 +62,7 @@ const Dashboard = () => {
             <Posts posts={posts} setSelectedPost={setSelectedPostHandler} >
             </Posts>
             <UpdateComponent updateValue={updateValue}></UpdateComponent>
-            {selectedPost?<PostDetails post={selectedPost} deletePost={deletePost}></PostDetails>:null}
+            {selectedPost?<PostDetails post={selectedPost} id={selectedPost.id} deletePost={deletePost}></PostDetails>:null}
             <AddPost submitPost={submitPost}></AddPost>
         </>
     )

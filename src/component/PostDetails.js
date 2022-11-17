@@ -1,4 +1,20 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { baseUrl } from "../container/Dashboard";
+
+
 const PostDetails = (props) => {
+    const fetchPost=(id)=>{
+        axios({
+            url:baseUrl+"posts/"+id+"/"
+        }).then(resp=>{
+            setPost(resp.data)
+        }).catch();
+    };
+    const [post,setPost]=useState({});
+    useEffect(()=>{
+        fetchPost(props.id)
+    },[props.id]);
     return (
         <div className="row">
             <div className="col-md-12">
