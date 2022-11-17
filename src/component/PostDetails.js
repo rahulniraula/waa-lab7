@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
+import Comments from "../container/comments";
 import { baseUrl } from "../container/Dashboard";
 import SelectedPostContext from "../context/selectedPostContext";
 
@@ -27,6 +28,7 @@ const PostDetails = (props) => {
                 <p>{post.content}</p>
                 <button className="btn btn-primary mx-1">Edit</button>
                 <button className="btn btn-primary" onClick={()=>props.deletePost(post.id)}>Delete</button>
+                <Comments comments={post.comments}></Comments>
             </div>
         </div>
     );
